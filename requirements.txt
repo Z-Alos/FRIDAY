@@ -1,0 +1,8 @@
+pyttsx3
+speechrecognition
+wikipedia-api
+speedtest-cli
+pywhatkit
+pycaw
+pyautogui
+screen_brightness_control
