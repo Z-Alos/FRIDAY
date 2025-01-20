@@ -5,6 +5,7 @@ from modules.media.playback import play_media, skip_or_rewind
 from modules.internet.open_website import open_website
 from modules.system.brightness import change_brightness
 from modules.system.power_manager import power_manager
+from modules.accessibility.keyboard import manage_keyboard
 from core.engine import speak
 
 import pyautogui
@@ -57,4 +58,8 @@ def handle_command(command):
     # Command: Power Manager
     elif 'sleep' in command or 'hibernate' in command or 'restart' in command or 'shutdown' in command:
         power_manager(command)
+
+    # Command: Power Manager
+    elif 'typewriter' in command:
+        manage_keyboard(command)
     

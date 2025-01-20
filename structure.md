@@ -7,6 +7,9 @@ friday/
 │   ├── utilities.py         # Common utility functions
 │   ├── config.py            # Global configurations
 ├── modules/
+│   ├── accessibility/
+│   │   ├── __init__.py      # Initialize system module
+│   │   ├── keyboard.py      # Voice to text
 │   ├── system/
 │   │   ├── __init__.py      # Initialize system module
 │   │   ├── volume.py        # Volume adjustment logic
