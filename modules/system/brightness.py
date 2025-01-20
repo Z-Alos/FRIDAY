@@ -1,25 +1,57 @@
 from core.engine import speak
 import screen_brightness_control as sbc
 
-current_brightness = sbc.get_brightness()
+
 
 def set_brightness_level(level):
-    sbc.set_brightness(level)
-    speak(f"Brightness set to {level}%")
+    """
+    Sets brightness to the specified level for physical monitors.
+    """
+    try:
+        sbc.set_brightness(level)
+        speak(f"Brightness set to {level}%")
+    except Exception as e:
+        speak("Failed to set brightness.")
+        print(f"Error setting brightness: {e}")
 
 def increase_brightness():
-    sbc.set_brightness('+10')
-    speak("Brightness increased by 10%")
-    
+    """
+    Increases brightness by 10% for physical monitors.
+    """    
+    try:
+        sbc.set_brightness('+10')
+        speak("Brightness increased by 10%")
+    except Exception as e:
+        speak("Failed to increase brightness.")
+        print(f"Error increasing brightness: {e}")
+
 def decrease_brightness():
-    sbc.set_brightness('-10')
-    speak("Brightness decreased by 10%")
+    """
+    Decreases brightness by 10% for physical monitors.
+    """
+    try:
+        sbc.set_brightness('-10')
+        speak("Brightness decreased by 10%")
+    except Exception as e:
+        speak("Failed to decrease brightness.")
+        print(f"Error decreasing brightness: {e}")
 
 def change_brightness(command):
-    level = ''.join(filter(str.isdigit, command))
-    if level:
-        set_brightness_level(level)
-    elif "increase" in command:
-        increase_brightness()
-    elif "decrease" in command:
-        decrease_brightness()
+    """
+    Adjusts brightness based on the given command.
+    """
+    try:
+        level = ''.join(filter(str.isdigit, command))
+        if level:
+            set_brightness_level(level)
+        elif "increase" in command:
+            increase_brightness()
+        elif "decrease" in command:
+            decrease_brightness()
+        else:
+            speak("Invalid brightness command.")
+            print("Invalid command format.")
+    except Exception as e:
+        speak("An error occurred while processing the brightness command.")
+        print(f"Command processing error: {e}")
+
