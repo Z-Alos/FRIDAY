@@ -4,8 +4,7 @@ import pyautogui
 def typewriter(text):
     if not text:
         return
-    speak("writing")
-    print(f'writing: {text}')
+    speak("writing", f'writing: {text}')
     pyautogui.write(text, interval=0.015)
 
 # main function: receive command

@@ -7,12 +7,12 @@ def recognize_speech(queue: Queue):
     recognizer = sr.Recognizer()
     mic = sr.Microphone()
 
-    print("Speech recognition process started...")
+    print("Speech recognition process started...\n")
     with mic as source:
         recognizer.adjust_for_ambient_noise(source)
-        print("Listening...")
         while True:
             try:
+                queue.put("listening")
                 audio = recognizer.listen(source)
                 text = recognizer.recognize_google(audio)
                 queue.put(text)
@@ -21,4 +21,3 @@ def recognize_speech(queue: Queue):
             except sr.RequestError:
                 error_message = "Could not connect to the internet, check your connectivity..."
                 speak(error_message)
-                queue.put(error_message)

@@ -11,8 +11,8 @@ def set_brightness_level(level):
         sbc.set_brightness(level)
         speak(f"Brightness set to {level}%")
     except Exception as e:
-        speak("Failed to set brightness.")
-        print(f"Error setting brightness: {e}")
+        speak("Failed to set brightness.",
+              f"Error setting brightness: {e}")
 
 def increase_brightness():
     """
@@ -22,8 +22,8 @@ def increase_brightness():
         sbc.set_brightness('+10')
         speak("Brightness increased by 10%")
     except Exception as e:
-        speak("Failed to increase brightness.")
-        print(f"Error increasing brightness: {e}")
+        speak("Failed to increase brightness.",
+              f"Error increasing brightness: {e}")
 
 def decrease_brightness():
     """
@@ -33,8 +33,8 @@ def decrease_brightness():
         sbc.set_brightness('-10')
         speak("Brightness decreased by 10%")
     except Exception as e:
-        speak("Failed to decrease brightness.")
-        print(f"Error decreasing brightness: {e}")
+        speak("Failed to decrease brightness.", 
+              f"Error decreasing brightness: {e}")
 
 def change_brightness(command):
     """
@@ -50,8 +50,7 @@ def change_brightness(command):
             decrease_brightness()
         else:
             speak("Invalid brightness command.")
-            print("Invalid command format.")
     except Exception as e:
-        speak("An error occurred while processing the brightness command.")
-        print(f"Command processing error: {e}")
+        speak("An error occurred while processing the brightness command.", 
+        f"An error occurred while processing the brightness command: {e}")
 
