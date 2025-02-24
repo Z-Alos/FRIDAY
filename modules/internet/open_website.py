@@ -1,10 +1,18 @@
 import webbrowser
 from core.engine import speak
+from sys import platform
+
+LINUX_BROWSER = 'firefox'
+WINDOWS_BROWSER = 'chrome'
 
 def open_this_thing(url, name):
     try:
-        webbrowser.register('chrome', None, webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
-        webbrowser.get('chrome').open(url)
+        if platform == 'linux' or platform == 'linux2':
+            webbrowser.register(LINUX_BROWSER, None, webbrowser.BackgroundBrowser("/usr/bin/firefox"))
+            webbrowser.get(LINUX_BROWSER).open(url)
+        elif platform == 'win': 
+            webbrowser.register(WINDOWS_BROWSER, None, webbrowser.BackgroundBrowser("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"))
+            webbrowser.get(WINDOWS_BROWSER).open(url)
         speak(f"Opening {name}.")
     except Exception as e:
         print(f"Error opening {name}: {e}")

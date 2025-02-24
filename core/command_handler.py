@@ -3,8 +3,8 @@ from modules.internet.speed_test import internet_speed_test
 from modules.system.volume import adjust_volume
 from modules.media.playback import play_media, skip_or_rewind
 from modules.internet.open_website import open_website
-from modules.system.brightness import change_brightness
-from modules.system.power_manager import power_manager
+# from modules.system.brightness import change_brightness
+# from modules.system.power_manager import power_manager
 from modules.accessibility.keyboard import manage_keyboard
 from core.engine import speak
 
@@ -31,9 +31,10 @@ def handle_command(command):
     elif 'volume' in command:
         level = ''.join(filter(str.isdigit, command))
         if level:
-            adjust_volume(level)
-        else:
-            speak("Please specify a valid volume level (1-10).")
+            if int(level) < 0 or int (level) > 10:
+                speak("Please specify a valid volume level (1-10).")
+            else:
+                adjust_volume(level)
     
     # Command: Internet speed test
     elif 'internet speed' in command:

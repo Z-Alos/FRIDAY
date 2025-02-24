@@ -1,9 +1,10 @@
-pyttsx3
 speechrecognition
 wikipedia-api
 speedtest-cli
 pywhatkit
+pydub
 pycaw
 pyautogui
 screen_brightness_control
 termcolor
+edge-tts
