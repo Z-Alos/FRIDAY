@@ -3,9 +3,10 @@ from modules.internet.speed_test import internet_speed_test
 from modules.system.volume import adjust_volume
 from modules.media.playback import play_media, skip_or_rewind
 from modules.internet.open_website import open_website
-# from modules.system.brightness import change_brightness
+from modules.system.brightness import change_brightness
 # from modules.system.power_manager import power_manager
 from modules.accessibility.keyboard import manage_keyboard
+from plugin.home_interface.interface import handle_device 
 from core.engine import speak
 
 import pyautogui
@@ -57,10 +58,14 @@ def handle_command(command):
         skip_or_rewind(command)
 
     # Command: Power Manager
-    elif 'sleep' in command or 'hibernate' in command or 'restart' in command or 'shutdown' in command:
-        power_manager(command)
+    # elif 'sleep' in command or 'hibernate' in command or 'restart' in command or 'shutdown' in command:
+    #     power_manager(command)
 
-    # Command: Power Manager
+    # Command: TypeWriter 
     elif 'typewriter' in command:
         manage_keyboard(command)
+
+    # Command: Power Manager
+    elif 'turn on' in command or 'turn off' in command or 'room shutdown' in command or 'room startup' in command:
+        handle_device(command)
     
