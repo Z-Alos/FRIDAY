@@ -1,14 +1,12 @@
 from core.engine import speak
 import screen_brightness_control as sbc
 
-
-
 def set_brightness_level(level):
     """
     Sets brightness to the specified level for physical monitors.
     """
     try:
-        sbc.set_brightness(level)
+        sbc.set_brightness(level, display=0)
         speak(f"Brightness set to {level}%")
     except Exception as e:
         speak("Failed to set brightness.",
@@ -19,7 +17,7 @@ def increase_brightness():
     Increases brightness by 10% for physical monitors.
     """    
     try:
-        sbc.set_brightness('+10')
+        sbc.set_brightness('+10', display=0)
         speak("Brightness increased by 10%")
     except Exception as e:
         speak("Failed to increase brightness.",
@@ -30,7 +28,7 @@ def decrease_brightness():
     Decreases brightness by 10% for physical monitors.
     """
     try:
-        sbc.set_brightness('-10')
+        sbc.set_brightness('-10', display=0)
         speak("Brightness decreased by 10%")
     except Exception as e:
         speak("Failed to decrease brightness.", 
